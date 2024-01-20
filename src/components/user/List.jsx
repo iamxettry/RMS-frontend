@@ -5,12 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 const List = ({toggle}) => {
     const pathname = usePathname();
-    const userId=Cookies.get("userId")
   return (
     <>
     <ul className="">
         {data.map((item)=>{
-            let isActive= pathname===`${item.path}`
+            let isActive= pathname===`/dashboard${item.path}`
 
             return(
                 <li key={item.id} className={`${isActive?" bg-gradient-to-r from-inherit to-inherit dark:from-pink-300 dark:to-white    text-black/90 ":"dark:text-white"} rounded-md flex justify-start items-center my-2  group text-black  hover:bg-green-200 dark:hover:bg-slate-800 relative `}>

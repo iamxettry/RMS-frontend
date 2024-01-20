@@ -15,18 +15,21 @@ const CartBox = () => {
   let verify = Cookies.get("loggedin");
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await fetch(`http://127.0.0.1:8000/api/order/carts/${userId}/`);
-        if (result.ok) {
-          const data = await result.json();
-          dispatch(setCartCount(data.result.length));
+    if (verify) {
+      
+      const fetchData = async () => {
+        try {
+          const result = await fetch(`http://127.0.0.1:8000/api/order/carts/${userId}/`);
+          if (result.ok) {
+            const data = await result.json();
+            dispatch(setCartCount(data.result.length));
+          }
+        } catch (e) {
+          toast.error("Fetch error!");
         }
-      } catch (e) {
-        toast.error("Fetch error!");
-      }
-    };
-    fetchData()
+      };
+      fetchData()
+    }
   },[verify]);
   const handleClick = () => {
     let userId=Cookies.get("userId")

@@ -6,7 +6,7 @@ const NavCard = ({ item ,toggle}) => {
       <i>
         <item.icon />
       </i>
-      <h1 className={`  md:inline-flex ${toggle?"inline-flex":"hidden"}`}>{item.title}</h1>
+      <h1 className={toggle?"":"hidden lg:flex"}>{item.title}</h1>
     </Link>
   );
 };

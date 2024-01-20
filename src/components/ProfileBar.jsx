@@ -20,8 +20,8 @@ const ProfileBar = () => {
       clearTimeout(countdownTimeout);
     };
   }, [toggleProfile]);
-  const accessToken = Cookies.get('access_token');  
-  const {data}=useGetLoggedUserQuery(accessToken)
+  const accessToken = Cookies.get('access_token'); 
+    const {data}=useGetLoggedUserQuery(accessToken);
   return (
     <div className="relative ">
       {data?( <>

@@ -67,14 +67,14 @@ const History = () => {
             </thead>
             <tbody>
               {data?.map((item) => {
-                const { id, completed, quantity } = item;
+                const { id, complete, quantity } = item;
                 const { name } = item.menu_item;
                 return (
                   <tr key={id}>
                     <td className="px-4 py-3 text-center capitalize ">{name}</td>
                     <td className="px-4 py-3 text-center ">{quantity}</td>
                     <td className="px-4 py-3  flex justify-center items-center ">
-                      {completed ? (
+                      {complete ? (
                         <ImCheckmark className="text-green-500" />
                       ) : (
                         <ImCross className="text-red-600" />
