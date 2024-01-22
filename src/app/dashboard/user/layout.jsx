@@ -1,4 +1,4 @@
-import Sidebar from "@/components/user/Sidebar";
+import Sidebar from "@/components/dashboard/user/Sidebar";
 
 const layout = ({ children }) => {
   return (

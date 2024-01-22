@@ -10,10 +10,7 @@ const ToggleMode = () => {
   let mode=useSelector(selectCurrentMode)
   const dispatch=useDispatch()
   Cookies.set('mode',mode, {expires:10})
-  
-  useEffect(()=>{
-    
-  },[mode])
+
   return (
     <div className=' relative md:mr-4'>
         <button className=" bg-transparent rounded-full m-1 flex justify-center gap-2 md:gap-3 text-sm md:text-2xl items-center border-2 px-2  py-1  dark:border-white/50 border-black/60" onClick={()=>dispatch(setDarkMode(!mode))} >

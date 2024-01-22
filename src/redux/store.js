@@ -6,6 +6,7 @@ import cartReducer from "./features/CartCountSlice"
 import searchReducer from './features/searchTerm'
 import quantityReducer from './features/productCount'
 import totalReducer from './features/grandTotal'
+import profileReducer from './features/profileImageSlice'
 
 import {userApi} from "./services/users/userApi"
 export const store=configureStore({
@@ -16,6 +17,7 @@ export const store=configureStore({
         searchValue:searchReducer,
         counter:quantityReducer,
         total:totalReducer,
+        profile:profileReducer,
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(userApi.middleware),

@@ -1,5 +1,5 @@
-import OrderItem from '@/components/user/OrderItem'
-import Ordernav from '@/components/user/Ordernav'
+import OrderItem from '@/components/dashboard/user/OrderItem'
+import Ordernav from '@/components/dashboard/user/Ordernav'
 import React from 'react'
 
 const page = () => {

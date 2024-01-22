@@ -5,7 +5,6 @@ import {toast} from 'react-toastify'
 const UserInfo = () => {
   const accessToken = Cookies.get("access_token");
   const { data } = useGetLoggedUserQuery(accessToken);
-  const userId=Cookies.get("userId")
   const handleLogout =async () => {
 
     Cookies.remove("loggedin")
@@ -59,15 +58,22 @@ const UserInfo = () => {
               </li>
               }
             
-              
-              <li>
-                <a
-                  href="#"
+              {
+                data?.is_superuser ?<li>
+                <Link
+                  href="/dashboard/admin/setting"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 dark:hover:bg-white rounded-md  dark:text-gray-200 dark:hover:text-black"
                 >
                   Settings
-                </a>
-              </li>
+                </Link>
+              </li>: <Link
+                  href="/dashboard/user/setting"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 dark:hover:bg-white rounded-md  dark:text-gray-200 dark:hover:text-black"
+                >
+                  Settings
+                </Link>
+              }
+              
 
               <li onClick={handleLogout}>
 

@@ -3,11 +3,15 @@ import Btn from "@/utils/Btn";
 import Image from "next/image";
 import UserInfo from "./UserInfo";
 import { useEffect, useState } from "react";
-import { hero } from "../../public/assets";
 import Cookies from "js-cookie";
-import { useGetLoggedUserQuery } from "@/redux/services/users/userApi";
+import { useGetLoggedUserProfileQuery, useGetLoggedUserQuery } from "@/redux/services/users/userApi";
+import { FaUserCircle } from "react-icons/fa";
+import { selectProfileImage, setProfile } from "@/redux/features/profileImageSlice";
+import {useSelector,useDispatch} from 'react-redux';
 const ProfileBar = () => {
   const [toggleProfile, setToggleProfile] = useState(false);
+  const dispatch=useDispatch()
+  let profile_image=useSelector(selectProfileImage)
   useEffect(() => {
     let countdownTimeout;
     if (toggleProfile) {
@@ -22,19 +26,47 @@ const ProfileBar = () => {
   }, [toggleProfile]);
   const accessToken = Cookies.get('access_token'); 
     const {data}=useGetLoggedUserQuery(accessToken);
+    const userId= Cookies.get('userId')
+  
+    useEffect(()=>{
+      const fetchData=async ()=>{
+        try {
+          const res=await fetch(`http://127.0.0.1:8000/api/users/profile-picture/${userId}/`)
+          if (!res.ok) {
+            return;
+          }
+          const data=await res.json()
+          dispatch(setProfile(data?.profile_picture))
+
+
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      if (userId) {
+        
+        fetchData()
+      }
+    },[userId, setProfile])
+  
   return (
     <div className="relative ">
       {data?( <>
           <button
-            className={`rounded-full bg-pink-500 w-10 h-10 flex justify-center items-center cursor-pointer `}
+            className={`rounded-full border-2 border-orange-500 p-0.5 flex justify-center items-center cursor-pointer `}
             onClick={() => setToggleProfile(!toggleProfile)}
           >
-            <Image
-              src={hero}
+            {
+              profile_image?<Image
+              src={profile_image}
               alt={` profile`}
-              className="w-auto h-auto"
+              className="h-9 w-9 rounded-full"
+              width={300}
+              height={300}
               priority
-            />
+            />:<FaUserCircle className="text-4xl" />
+            }
+           
           </button>
           <div
             className={` absolute top-20  -right-10 lg:-right-20 transition-all ease-in duration-500  rounded-xl   ${

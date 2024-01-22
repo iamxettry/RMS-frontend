@@ -8,7 +8,7 @@ const createRequest = (url, payload) => ({
   url,
   body: payload,
   method: "POST",
-  Headers: apiHeader,
+  headers: apiHeader,
 });
 
 // Define a sevice using a base URL and expected endpoints
@@ -28,11 +28,22 @@ export const userApi = createApi({
         url: "login/",
         method: "POST",
         body: payload,
-        Headers: apiHeader,
+        headers: apiHeader,
       }),
     }),
     uploadProfile:builder.mutation({
-      query:(file)=>createRequest('profile/',{image: file}),
+      query:({file,accessToken})=>{
+        const formData = new FormData();
+      formData.append("profile_picture", file);
+        return {
+          url: 'profile/',
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+          },
+        };
+      }
     }),
     getLoggedUser: builder.query({
       query: (access_token) => {
@@ -42,6 +53,14 @@ export const userApi = createApi({
           headers: {
             'authorization': `Bearer ${access_token}`,
           }
+        }
+      }
+    }),
+    getLoggedUserProfile: builder.query({
+      query: (id) => {
+        return {
+          url: `profile-picture/${id}/`,
+          method: 'GET',
         }
       }
     }),
@@ -72,4 +91,4 @@ export const userApi = createApi({
   }),
 });
 
-export const { useRegisterUserMutation, useLoginUserMutation,useSendPasswordResetEmailMutation,useResetPasswordMutation, useGetLoggedUserQuery } = userApi;
+export const { useRegisterUserMutation, useLoginUserMutation,useSendPasswordResetEmailMutation,useResetPasswordMutation, useGetLoggedUserQuery, useUploadProfileMutation, useGetLoggedUserProfileQuery} = userApi;
