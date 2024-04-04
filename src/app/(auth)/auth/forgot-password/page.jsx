@@ -37,9 +37,10 @@ const ForgetPassword = () => {
     e.preventDefault()
 
       const res= await sendPasswordResetEmail({email})
-      if (res.data) {
-        toast.success(res.data.message)
-        Cookies.set("reset_link",res.data.reset_link, {expires:1})
+      
+      if (res?.data) {
+        toast.success(res.data.data.message)
+        Cookies.set("reset_link",res.data.data.reset_link, {expires:1})
       }
       if (res?.error?.data?.non_field_errors) {
         toast.error(res.error.data.non_field_errors[0])

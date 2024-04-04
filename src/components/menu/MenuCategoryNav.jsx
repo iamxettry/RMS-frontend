@@ -21,7 +21,7 @@ const MenuCategoryNav = () => {
     <div className="flex bg-transparent  px-4 py-3 justify-start items-center gap-5 border-b-2 border-gray-500 dark:drop-shadow-md flex-wrap text-gray-700 dark:text-white/80">
 
         {
-            category.map((item)=>(
+            category?.map((item)=>(
                 <li key={item.category} className="list-none">
                 <a
                   href={`#${item.category}`}

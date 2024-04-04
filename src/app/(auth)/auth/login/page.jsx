@@ -61,7 +61,6 @@ const Login = () => {
       toast.error("Bad Request!!!");
     }
   };
-  console.log("login");
   return (
     <>
       <div className="relative z-0 dark:border dark:border-white/80 border-black/80 rounded-2xl  shadow-md dark:shadow-white/50 shadow-gray-700 p-2  lg:w-4/5 mx-auto">

@@ -12,7 +12,6 @@ import { toast } from "react-toastify";
 const UploadProfile = () => {
   const [file, setFile] = useState('');
   const [uploadProfile] = useUploadProfileMutation();
-
   const dispatch=useDispatch()
   const accessToken = Cookies.get("access_token");
   const userId = Cookies.get("userId");
@@ -33,6 +32,7 @@ const UploadProfile = () => {
 
     try {
       const res = await uploadProfile({ file, accessToken });
+      console.log(res);
       if (res.error) {
         toast.error(res.error.data.errors.detail);
       } else {

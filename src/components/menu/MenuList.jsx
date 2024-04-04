@@ -31,7 +31,7 @@ const MenuList = () => {
   return (
     <div className="">
       {/* map */}
-      {category.map((items) => (
+      {category?.map((items) => (
         <div id={items.category} key={items.category}>
           {/* check searchTerm is yes display none */}
           {searchTerm ? (

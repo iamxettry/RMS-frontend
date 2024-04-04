@@ -48,7 +48,7 @@ const UserInfo = () => {
                   Admin
                 </Link>
               </li>:
-                <li>
+                <li className=""> 
                 <Link
                   href={`/dashboard/user`}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-400 dark:hover:bg-white rounded-md  dark:text-gray-200 dark:hover:text-black"
