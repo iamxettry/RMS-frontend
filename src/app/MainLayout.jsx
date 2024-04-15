@@ -24,7 +24,7 @@ const MainLayout = ({ children }) => {
           <div className="min-h-screen z-0 w-[90%] sm:w-[86%] lg:w-4/5 mx-auto text-black dark:text-white">
             {children}
           </div>
-          <footer className="relative bottom-0 left-0 mt-10 z-20  text-black dark:text-white">
+          <footer className="relative bottom-0 left-0 mt-10 z-20 text-black dark:text-white">
             <Footer />
           </footer>
         </div>

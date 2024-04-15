@@ -9,8 +9,9 @@ import hero10bgremoved from './carousel-img/hero10-removebg.png'
 import cupcake from './menuImages/bg-removed/cup cake.png'
 import ceviche from './menuImages/bg-removed/ceviche.png'
 import dublayercake from './menuImages/bg-removed/double layer cake.png'
+import khalti from './khalti.png'
 
 
 export {
-    auth,circle,checklist,wings,dear,hero,hero10bgremoved,cupcake,dublayercake,ceviche
+    auth,circle,checklist,wings,dear,hero,hero10bgremoved,cupcake,dublayercake,ceviche,khalti
 }
